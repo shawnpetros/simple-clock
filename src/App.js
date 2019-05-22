@@ -10,6 +10,8 @@ class App extends Component {
 
   breakdownTime () {
     const distance = this.state.countDownDate - new Date().getTime();
+
+    if (distance <= 0) return 'EXPIRED!!!'
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
