@@ -3,7 +3,19 @@ import './App.css'
 
 class App extends Component {
   state = {
-    time: this.formatTime(new Date(Date.now()))
+    time: this.formatTime(new Date(Date.now())),
+    countDownDate: new Date('May 22, 2019 13:00:00').getTime(),
+    countDown: 0
+  }
+
+  breakdownTime () {
+    const distance = this.state.countDownDate - new Date().getTime();
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`
   }
 
   componentWillMount () {
@@ -20,7 +32,8 @@ class App extends Component {
 
   tick () {
     this.setState({
-      time: this.formatTime(new Date(Date.now()))
+      time: this.formatTime(new Date(Date.now())),
+      countDown: this.breakdownTime()
     })
   }
 
@@ -29,12 +42,13 @@ class App extends Component {
   }
 
   render () {
-    const { time } = this.state
+    const { countDown } = this.state
 
     return (
       <div className='App'>
         <header className='App-header'>
-          { time }
+          {/* { time } */}
+          { countDown }
         </header>
       </div>
     )
