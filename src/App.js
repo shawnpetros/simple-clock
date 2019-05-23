@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   render () {
-    const { countDown } = this.state
+    const { time } = this.state
 
     return (
       <div className='App'>
