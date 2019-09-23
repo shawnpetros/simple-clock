@@ -53,8 +53,8 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App-header'>
-          {/* { time } */}
-          {countDown}
+          { time }
+          {/* countDown */}
         </header>
       </div>
     )
